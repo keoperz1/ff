@@ -348,21 +348,6 @@ class FreeFireApp {
         });
 
         // Social card clicks
-        document.querySelectorAll('.social-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                card.classList.add('pulse');
-                setTimeout(() => {
-                    card.classList.remove('pulse');
-                }, 300);
-                
-                // In a real app, this would navigate to the social link
-                console.log('Navigating to:', card.querySelector('span').textContent);
-            });
-        });
-
-        // Gallery item clicks
-        // Social card clicks
 // UPDATED: Only prevent default for gamepad links (copy UID function)
 document.querySelectorAll('.social-card').forEach(card => {
     card.addEventListener('click', (e) => {
@@ -392,6 +377,17 @@ document.querySelectorAll('.social-card').forEach(card => {
     });
 });
 
+        // Gallery item clicks
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const overlay = item.querySelector('.gallery-overlay');
+                overlay.style.transform = 'translateY(0)';
+                
+                setTimeout(() => {
+                    overlay.style.transform = 'translateY(100%)';
+                }, 3000);
+            });
+        });
 
         // Prevent zoom on double tap (mobile)
         let lastTouchEnd = 0;
@@ -451,5 +447,4 @@ window.addEventListener('online', () => {
 window.addEventListener('offline', () => {
     document.body.classList.add('offline');
     console.log('You are offline. Some features may not work.');
-
 });
