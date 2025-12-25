@@ -430,7 +430,7 @@ class FreeFireApp {
 
     // Copy UID function
     copyUID() {
-        const uid = "1234567890";
+        const uid = "635235148";
         
         // Use modern clipboard API
         if (navigator.clipboard && window.isSecureContext) {
@@ -657,3 +657,4 @@ document.addEventListener('visibilitychange', () => {
         console.log('Page is visible');
     }
 });
+
