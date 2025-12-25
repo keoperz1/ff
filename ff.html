@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FIRE_PRO - Free Fire Elite Player</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oxanium:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Component -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" onclick="showSection('home')">BᴀʙᴀㅤTɪʟʟυ</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" onclick="showSection('home')" class="nav-link active">Home</a>
+                <a href="#about" onclick="showSection('about')" class="nav-link">About</a>
+                <a href="#squad" onclick="showSection('squad')" class="nav-link">Squad</a>
+                <a href="#stats" onclick="showSection('stats')" class="nav-link">Stats</a>
+                <a href="#gallery" onclick="showSection('gallery')" class="nav-link">Gallery</a>
+                <a href="#contact" onclick="showSection('contact')" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main App Container -->
+    <main class="app-container" id="appContainer">
+        <!-- Home Component -->
+        <section id="home" class="section active">
+            <div class="hero-section">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <img src="profile.jpeg" alt="Profile" class="hero-avatar animate-float">
+                    <h1 class="hero-title animate-glow">BᴀʙᴀㅤTɪʟʟυ</h1>
+                    <div class="hero-subtitle">
+                        <span class="uid-badge">UID: 635235148</span>
+                        <span class="region-badge">INDIA Server</span>
+                    </div>
+                    <div class="live-stats-grid">
+                        <div class="live-stat-card animate-slide-up delay-1">
+                            <div class="stat-icon"><i class="fas fa-circle online"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-label">Status</div>
+                                <div class="stat-value online">Playing Now</div>
+                            </div>
+                        </div>
+                        <div class="live-stat-card animate-slide-up delay-2">
+                            <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-label">Win Streak</div>
+                                <div class="stat-value">1</div>
+                            </div>
+                        </div>
+                        <div class="live-stat-card animate-slide-up delay-3">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-content">
+                                <div class="stat-label">Squad</div>
+                                <div class="stat-value">4/4 Online</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="showSection('stats')">
+                            <i class="fas fa-chart-line"></i> View Stats
+                        </button>
+                        <button class="btn-secondary" onclick="showSection('squad')">
+                            <i class="fas fa-users"></i> Meet Squad
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Component -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title animate-text-reveal">About The Player</h2>
+                <div class="about-grid">
+                    <div class="about-card animate-card-in">
+                        <div class="card-header">
+                            <i class="fas fa-user-shield"></i>
+                            <h3>Playstyle</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Aggressive rusher with insane clutch abilities. Specializes in high-pressure situations and strategic flanks.</p>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-crosshairs"></i> 62% Headshot Accuracy</li>
+                                <li><i class="fas fa-bolt"></i> Fast Reflexes</li>
+                                <li><i class="fas fa-brain"></i> Strategic Mindset</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="about-card animate-card-in delay-1">
+                        <div class="card-header">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Achievements</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="achievement-badge">
+                                <i class="fas fa-crown"></i>
+                                <span>Top 10000 Global</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-award"></i>
+                                <span>5x Tournament Winner</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-star"></i>
+                                <span>MVP 2473+ Matches</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-card animate-card-in delay-2">
+                        <div class="card-header">
+                            <i class="fas fa-gamepad"></i>
+                            <h3>Preferences</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="preference-item">
+                                <strong>Guild:</strong> IMPERIAL X
+                            </div>
+                            <div class="preference-item">
+                                <strong>Main Mode:</strong> Clash Squad
+                            </div>
+                            <div class="preference-item">
+                                <strong>Play Time:</strong> 6+ Years
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Squad Component -->
+        <section id="squad" class="section">
+            <div class="container">
+                <h2 class="section-title animate-text-reveal">IMPERIAL X</h2>
+                <p class="section-subtitle">The unstoppable team that dominates every battlefield</p>
+                
+                <div class="squad-grid">
+                    <!-- Squad Member 1 -->
+                    <div class="squad-member-card animate-card-in">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="sirji.jpeg" alt="ShadowHunter">
+                                <div class="member-status online"></div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">0x65</h3>
+                                <div class="member-rank heroic">Elite Master</div>
+                                <div class="member-role sniper">Sniper / Scout</div>
+                            </div>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">2.82</div>
+                                <div class="stat-label">K/D</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">68%</div>
+                                <div class="stat-label">HS</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">76.4K</div>
+                                <div class="stat-label">Kills</div>
+                            </div>
+                        </div>
+                        <div class="member-description">
+                            Silent assassin with unmatched sniper precision. Provides crucial cover fire.
+                        </div>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/himan5hu_rajput143" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-gamepad"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Squad Member 2 -->
+                    <div class="squad-member-card animate-card-in delay-1">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="Screenshot 2025-12-25 232812.png" alt="Valkyrie">
+                                <div class="member-status online"></div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Sᴜʀɢᴇ!!</h3>
+                                <div class="member-rank grandmaster">Elite Master</div>
+                                <div class="member-role rusher">Rusher / Assault</div>
+                            </div>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">2.61</div>
+                                <div class="stat-label">K/D</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">63%</div>
+                                <div class="stat-label">Win</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">44.7K</div>
+                                <div class="stat-label">Kills</div>
+                            </div>
+                        </div>
+                        <div class="member-description">
+                            Frontline warrior who leads the charge. Expert in close-quarter combat.
+                        </div>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
+                            <a href="https://www.instagram.com/fymrohan" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-gamepad"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Squad Member 3 -->
+                    <div class="squad-member-card animate-card-in delay-2">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="keoper.jpeg" alt="Phantom">
+                                <div class="member-status idle"></div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">BᴀʙᴀTɪʟʟυ</h3>
+                                <div class="member-rank diamond">Diamond I</div>
+                                <div class="member-role support">Support / Medic</div>
+                            </div>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">3.91</div>
+                                <div class="stat-label">K/D</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">Revives</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">7.2K</div>
+                                <div class="stat-label">Kills</div>
+                            </div>
+                        </div>
+                        <div class="member-description">
+                            Team backbone ensuring squad survival. Expert in healing and resources.
+                        </div>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitch"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-gamepad"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Squad Member 4 -->
+                    <div class="squad-member-card animate-card-in delay-3">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="Screenshot 2025-12-25 234026.png" alt="Nova">
+                                <div class="member-status online"></div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">SOYAM•YT</h3>
+                                <div class="member-rank grandmaster">Elite Master</div>
+                                <div class="member-role strategist">Strategist / IGL</div>
+                            </div>
+                        </div>
+                        <div class="member-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">4.65</div>
+                                <div class="stat-label">K/D</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">70%</div>
+                                <div class="stat-label">Win</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">11.5K</div>
+                                <div class="stat-label">Kills</div>
+                            </div>
+                        </div>
+                        <div class="member-description">
+                            Mastermind calling strategic shots. Exceptional game sense and tactics.
+                        </div>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-gamepad"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="squad-overall animate-fade-in">
+                    <h3>Squad Statistics</h3>
+                    <div class="squad-stats">
+                        <div class="squad-stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Tournament Wins</div>
+                        </div>
+                        <div class="squad-stat">
+                            <div class="stat-number">45K+</div>
+                            <div class="stat-label">Total Kills</div>
+                        </div>
+                        <div class="squad-stat">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-label">Win Rate</div>
+                        </div>
+                        <div class="squad-stat">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Years Together</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Component -->
+        <section id="stats" class="section">
+            <div class="container">
+                <h2 class="section-title animate-text-reveal">Performance Statistics</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card-large animate-card-in">
+                        <div class="stat-icon"><i class="fas fa-skull-crossbones"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value" data-target="2.78">0.00</div>
+                            <div class="stat-label">K/D Ratio</div>
+                            <div class="stat-trend up">+12% this month</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card-large animate-card-in delay-1">
+                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="stat-content">
+                            <div class="stat-value" data-target="66">0</div>
+                            <div class="stat-label">Win Rate %</div>
+                            <div class="stat-trend up">+8% this season</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detailed-stats">
+                    <div class="stats-row animate-slide-up">
+                        <div class="stat-item-detail">
+                            <div class="stat-title">Headshot Percentage</div>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar" style="width: 62%" data-width="23"></div>
+                                <span class="stat-percent">23%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-row animate-slide-up delay-1">
+                        <div class="stat-item-detail">
+                            <div class="stat-title">Total Kills</div>
+                            <div class="stat-number-large">30,000+</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-row animate-slide-up delay-2">
+                        <div class="stat-item-detail">
+                            <div class="stat-title">Max Kills in Match</div>
+                            <div class="stat-number-large animate-pulse">12</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-row animate-slide-up delay-3">
+                        <div class="stat-item-detail">
+                            <div class="stat-title">Average Damage</div>
+                            <div class="stat-number-large">4,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Component -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2 class="section-title animate-text-reveal">Gallery & Highlights</h2>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item animate-zoom-in">
+                        <img src="https://techrushi.com/wp-content/uploads/2025/08/Capture-your-profile-screenshot-.webp" alt="Profile Stats">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Rank Progress</div>
+                            <div class="gallery-description">Season 25 Grandmaster</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item animate-zoom-in delay-1">
+                        <img src="https://i.ytimg.com/vi/mcDOH7uwpy0/hq720.jpg" alt="Epic Booyah">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Epic Victory</div>
+                            <div class="gallery-description">1v4 Clutch Win</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item animate-zoom-in delay-2">
+                        <img src="https://i.ytimg.com/vi/27_OEKh2MXw/hq720.jpg" alt="Clutch Moment">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Clutch Moment</div>
+                            <div class="gallery-description">Tournament Finals</div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item animate-zoom-in delay-3">
+                        <img src="https://i.ytimg.com/vi/pNjSkaMdApA/hq720.jpg" alt="Victory Screenshot">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Victory Screen</div>
+                            <div class="gallery-description">Perfect Game</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Component -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title animate-text-reveal">Connect With Me</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-form-card animate-card-in">
+                        <h3>Send Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <select required>
+                                    <option value="">Select Subject</option>
+                                    <option value="collab">Collaboration</option>
+                                    <option value="tournament">Tournament</option>
+                                    <option value="coaching">Coaching</option>
+                                    <option value="squad">Join Squad</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="social-links-card animate-card-in delay-1">
+                        <h3>Social Links</h3>
+                        <div class="social-grid">
+                            <a href="#" class="social-card youtube animate-bounce">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                                <small>25K Subscribers</small>
+                            </a>
+                            <a href="https://www.instagram.com/himan5hu_rajput143" target="_blank" rel="noopener noreferrer" class="social-card instagram animate-bounce delay-1">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                                <small>15K Followers</small>
+                            </a>
+                            <a href="#" class="social-card twitch animate-bounce delay-2">
+                                <i class="fab fa-twitch"></i>
+                                <span>Twitch</span>
+                                <small>Live Daily</small>
+                            </a>
+                            <a href="#" class="social-card discord animate-bounce delay-3">
+                                <i class="fab fa-discord"></i>
+                                <span>Discord</span>
+                                <small>Community</small>
+                            </a>
+                            <a href="#" class="social-card game animate-bounce delay-4">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Add in Game</span>
+                                <small>UID: 635235148</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-links">
+                    <a href="#home" onclick="showSection('home')">Home</a>
+                    <a href="#about" onclick="showSection('about')">About</a>
+                    <a href="#squad" onclick="showSection('squad')">Squad</a>
+                    <a href="#stats" onclick="showSection('stats')">Stats</a>
+                    <a href="#contact" onclick="showSection('contact')">Contact</a>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2025 FIRE_PRO - Free Fire Portfolio | All Rights Reserved 🔥
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Component -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
