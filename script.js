@@ -1,4 +1,4 @@
-// Free Fire Portfolio Application - React-style Component Management
+// Free Fire Portfolio Application - Fixed Version
 class FreeFireApp {
     constructor() {
         this.currentSection = 'home';
@@ -347,35 +347,36 @@ class FreeFireApp {
             });
         });
 
-        // Social card clicks
-// UPDATED: Only prevent default for gamepad links (copy UID function)
-document.querySelectorAll('.social-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-        // Only prevent default for game links (for copy UID function)
-        if (card.classList.contains('game')) {
-            e.preventDefault();
-            
-            // Copy UID to clipboard
-            const uid = "1234567890";
-            navigator.clipboard.writeText(uid).then(() => {
-                // Show copied notification
-                const originalText = card.querySelector('span').textContent;
-                card.querySelector('span').textContent = 'Copied!';
-                
-                setTimeout(() => {
-                    card.querySelector('span').textContent = originalText;
-                }, 2000);
+        // Social card clicks - FIXED VERSION
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Only prevent default for gamepad cards (UID copy)
+                if (card.classList.contains('game')) {
+                    e.preventDefault();
+                    
+                    // Copy UID function
+                    this.copyUID();
+                    
+                    // Animation
+                    card.classList.add('pulse');
+                    setTimeout(() => {
+                        card.classList.remove('pulse');
+                    }, 300);
+                }
+                // For other social cards, let them open normally
             });
-            
-            // Animation
-            card.classList.add('pulse');
-            setTimeout(() => {
-                card.classList.remove('pulse');
-            }, 300);
-        }
-        // For other social links, let them open normally
-    });
-});
+        });
+
+        // Social links in squad section
+        document.querySelectorAll('.member-social .social-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Only add animation, don't prevent default
+                link.classList.add('pulse');
+                setTimeout(() => {
+                    link.classList.remove('pulse');
+                }, 300);
+            });
+        });
 
         // Gallery item clicks
         document.querySelectorAll('.gallery-item').forEach(item => {
@@ -386,6 +387,23 @@ document.querySelectorAll('.social-card').forEach(card => {
                 setTimeout(() => {
                     overlay.style.transform = 'translateY(100%)';
                 }, 3000);
+            });
+        });
+
+        // View profile buttons in squad section
+        document.querySelectorAll('.view-profile-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Animation
+                btn.classList.add('clicked');
+                setTimeout(() => {
+                    btn.classList.remove('clicked');
+                }, 300);
+                
+                // Show profile modal or redirect
+                const memberName = btn.closest('.squad-member-card').querySelector('.member-name').textContent;
+                alert(`Opening ${memberName}'s profile...`);
             });
         });
 
@@ -409,6 +427,113 @@ document.querySelectorAll('.social-card').forEach(card => {
             }, 300);
         });
     }
+
+    // Copy UID function
+    copyUID() {
+        const uid = "1234567890";
+        
+        // Use modern clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(uid).then(() => {
+                this.showNotification(`UID ${uid} copied to clipboard!`);
+            }).catch(err => {
+                // Fallback method
+                this.copyUIDFallback(uid);
+            });
+        } else {
+            // Fallback for older browsers
+            this.copyUIDFallback(uid);
+        }
+    }
+
+    copyUIDFallback(uid) {
+        const textArea = document.createElement('textarea');
+        textArea.value = uid;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+            this.showNotification(`UID ${uid} copied to clipboard!`);
+        } catch (err) {
+            alert(`Please copy this UID manually: ${uid}`);
+        } finally {
+            textArea.remove();
+        }
+    }
+
+    showNotification(message) {
+        // Remove any existing notification
+        const existingNotification = document.querySelector('.uid-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'uid-notification';
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff0000, #ff6600);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 9999;
+            font-family: 'Oxanium', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255,0,0,0.5);
+            animation: slideInRight 0.3s ease-out;
+            border: 2px solid #ff0000;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease-out';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    // New method to fix squad card layout issues
+    fixSquadCardLayout() {
+        // Add CSS for better spacing and overflow handling
+        const style = document.createElement('style');
+        style.textContent = `
+            .member-name {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+                display: block;
+            }
+            
+            .member-role {
+                margin-top: 10px !important;
+                display: block;
+            }
+            
+            @media (max-width: 768px) {
+                .member-name {
+                    white-space: normal;
+                    overflow: visible;
+                    text-overflow: clip;
+                    max-width: 100%;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // Initialize the app when DOM is loaded
@@ -426,12 +551,82 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     };
 
+    window.copyUID = () => {
+        if (!window.app) window.app = new FreeFireApp();
+        window.app.copyUID();
+        return false;
+    };
+
     // Initialize the app
     window.app = new FreeFireApp();
+    
+    // Fix squad card layout
+    setTimeout(() => {
+        window.app.fixSquadCardLayout();
+    }, 1000);
+});
+
+// Add CSS animations for notifications
+document.addEventListener('DOMContentLoaded', () => {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        .clicked {
+            animation: clickEffect 0.3s ease;
+        }
+        
+        @keyframes clickEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulseEffect 0.3s ease;
+        }
+        
+        @keyframes pulseEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Fix for social links */
+        .social-card {
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px) !important;
+        }
+        
+        /* Fix spacing between rank and role in squad cards */
+        .member-rank {
+            margin-bottom: 8px !important;
+            display: inline-block !important;
+        }
+        
+        .member-role {
+            margin-top: 8px !important;
+            display: block !important;
+        }
+    `;
+    document.head.appendChild(style);
 });
 
 // Performance optimizations
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
     window.addEventListener('load', () => {
         // In a real app, you would register a service worker here
         console.log('Service Worker would be registered in production');
@@ -447,4 +642,18 @@ window.addEventListener('online', () => {
 window.addEventListener('offline', () => {
     document.body.classList.add('offline');
     console.log('You are offline. Some features may not work.');
+});
+
+// Error handling
+window.addEventListener('error', (e) => {
+    console.error('Application error:', e.error);
+});
+
+// Page visibility API
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        console.log('Page is hidden');
+    } else {
+        console.log('Page is visible');
+    }
 });
