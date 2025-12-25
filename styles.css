@@ -567,6 +567,7 @@ body {
     font-size: 1.5rem;
     color: #fff;
     margin-bottom: 5px;
+    max-width: 200px;
 }
 
 .member-rank, .member-role {
@@ -574,6 +575,7 @@ body {
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
+    margin-top: 10px;
     font-weight: bold;
     margin-right: 5px;
 }
@@ -582,7 +584,7 @@ body {
 .member-rank.grandmaster { background: rgba(255,0,0,0.3); color: #ff4444; }
 .member-rank.diamond { background: rgba(0,150,255,0.3); color: #00aaff; }
 
-.member-role.sniper { background: rgba(0,255,0,0.3); color: #00ff00; }
+.member-role.sniper { background: rgb(55, 249, 1); color: #575656; }
 .member-role.rusher { background: rgba(255,100,0,0.3); color: #ff6600; }
 .member-role.support { background: rgba(0,100,255,0.3); color: #0066ff; }
 .member-role.strategist { background: rgba(200,0,255,0.3); color: #cc00ff; }
